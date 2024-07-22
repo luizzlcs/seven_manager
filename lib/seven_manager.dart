@@ -9,6 +9,7 @@ class SevenManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Seven Manager',
       theme: SevenManagerTheme.lightTheme,
       routes: AppRoutes.router,
