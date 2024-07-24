@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:seven_manager/src/core/constants/app_routes.dart';
-
+import 'src/core/constants/app_routes.dart';
 import 'src/core/theme/seven_manager_theme.dart';
 
 class SevenManager extends StatelessWidget {

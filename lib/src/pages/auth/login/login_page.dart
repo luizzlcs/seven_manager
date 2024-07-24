@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import '../../../core/constants/app_images.dart';
+import '../../../core/constants/app_routes.dart';
 import '../../../core/theme/seven_manager_theme.dart';
 import 'widget/image_logo_widget.dart';
-// import '../../../core/constants/app_images.dart';
-// import '../../../core/theme/seven_manager_theme.dart';
-// import 'package:validatorless/validatorless.dart';
+import 'package:validatorless/validatorless.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -34,96 +31,116 @@ class _LoginPageState extends State<LoginPage> {
         ),
         Expanded(
           flex: 2,
-          child: Container(
-            height: sizeOf.height,
-            width: double.infinity,
-            decoration: const ShapeDecoration(
-              color: SevenManagerTheme.whiteColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(60.0),
-                ),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Column(children: [
-                const SizedBox(height: 30),
-                Image.asset(AppImages.logoGApp),
-                const SizedBox(height: 52),
-                TextFormField(
-                  style: const TextStyle(color: SevenManagerTheme.tealBlue),
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.email,
-                        size: 28,
-                      ),
-                      label: Text('E-mail')),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                TextFormField(
-                  obscureText: !_isVisible,
-                  style: const TextStyle(color: SevenManagerTheme.tealBlue),
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(
-                      Icons.key,
-                      size: 28,
-                    ),
-                    label: const Text('Senha'),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(
-                          () {
-                            _isVisible = !_isVisible;
-                          },
-                        );
-                      },
-                      icon: _isVisible
-                          ? const Icon(
-                              Icons.visibility,
-                              size: 28,
-                            )
-                          : const Icon(
-                              Icons.visibility_off,
-                              size: 28,
-                            ),
-                    ),
+          child: SingleChildScrollView(
+            child: Container(
+              height: sizeOf.height,
+              width: double.infinity,
+              decoration: const ShapeDecoration(
+                color: SevenManagerTheme.whiteColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(60.0),
                   ),
                 ),
-                const SizedBox(
-                  height: 32,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('routeName');
-                        }, child: const Text('Entrar'))
-                  ],
-                ),
-                const SizedBox(
-                  height: 32,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/recover');
-                  },
-                  child: const Text('Esqueci minha Senha'),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Não tem uma conta?'),
-                    TextButton(
-                      onPressed: () {Navigator.of(context).pushNamed('/register');},
-                      child: const Text('Cadastre-se'),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Form(
+                  key: formKey,
+                  child: Column(children: [
+                    const SizedBox(height: 30),
+                    Image.asset(AppImages.logoGApp),
+                    const SizedBox(height: 52),
+                    TextFormField(
+                      style: const TextStyle(color: SevenManagerTheme.tealBlue),
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.email,
+                          size: 28,
+                        ),
+                        label: Text('E-mail'),
+                      ),
+                      validator: Validatorless.multiple([
+                        Validatorless.email('O email digitado não é valido'),
+                        Validatorless.required('E-mail obrigatório')
+                      ]),
                     ),
-                  ],
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      obscureText: !_isVisible,
+                      style: const TextStyle(color: SevenManagerTheme.tealBlue),
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          Icons.key,
+                          size: 28,
+                        ),
+                        label: const Text('Senha'),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(
+                              () {
+                                _isVisible = !_isVisible;
+                              },
+                            );
+                          },
+                          icon: _isVisible
+                              ? const Icon(
+                                  Icons.visibility,
+                                  size: 28,
+                                )
+                              : const Icon(
+                                  Icons.visibility_off,
+                                  size: 28,
+                                ),
+                        ),
+                      ),
+                      validator: Validatorless.required('Senha Obrigatória'),
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              bool valid =
+                                  formKey.currentState?.validate() ?? false;
+
+                              if (valid) {
+                                Navigator.of(context)
+                                    .pushNamed(AppRoutes.homePage);
+                              }
+                            },
+                            child: const Text('Entrar'))
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(AppRoutes.recover);
+                      },
+                      child: const Text('Esqueci minha Senha'),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Não tem uma conta?'),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(AppRoutes.register);
+                          },
+                          child: const Text('Cadastre-se'),
+                        ),
+                      ],
+                    ),
+                  ]),
                 ),
-              ]),
+              ),
             ),
           ),
         ),

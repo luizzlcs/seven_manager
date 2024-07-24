@@ -7,7 +7,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:seven_manager/seven_manager.dart';
+
+// import 'package:sevenmanger/main.dart';
+import 'package:sevenmanger/seven_manager.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

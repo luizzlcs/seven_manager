@@ -1,4 +1,4 @@
-# seven_manager
+# sevenmanger
 
 A new Flutter project.
 

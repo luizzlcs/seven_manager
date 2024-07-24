@@ -15,7 +15,7 @@ class ImageLogoWidget extends StatelessWidget {
       child: CircleAvatar(
         radius: 72,
         backgroundColor: SevenManagerTheme.greyColor,
-        backgroundImage: pathImage.contains('http:')
+        backgroundImage: pathImage.contains('https:')
             ? NetworkImage(pathImage)
             : AssetImage(pathImage),
       ),

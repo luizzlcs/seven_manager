@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "95753080454",
+    "project_id": "seven-manager-a3de1",
+    "storage_bucket": "seven-manager-a3de1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95753080454:android:506524258145946b224b07",
+        "android_client_info": {
+          "package_name": "com.seven.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0PekFLC7RWTNk9e-y2vcVTP_PStE7nJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95753080454:android:03d3f66d19b00209224b07",
+        "android_client_info": {
+          "package_name": "com.sevenmanager.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0PekFLC7RWTNk9e-y2vcVTP_PStE7nJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

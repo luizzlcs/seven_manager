@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:seven_manager/src/pages/home/widget/avatar_widget.dart';
 import '../../core/theme/seven_manager_theme.dart';
+import 'widget/avatar_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

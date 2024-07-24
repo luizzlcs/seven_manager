@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sevenmanger/src/core/constants/app_routes.dart';
 import '../../../core/theme/seven_manager_theme.dart';
 
 class CustomCircleAvatar extends StatelessWidget {
@@ -8,35 +9,38 @@ class CustomCircleAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: SevenManagerTheme.tealBlue,
-              ),
-              borderRadius: BorderRadius.circular(100),
-            ),
-            height: 80,
-            width: 80,
-            child: const CircleAvatar(
-              child: Icon(
-                Icons.person,
-                size: 60,
-                color: SevenManagerTheme.tealBlue,
-              ),
-            ),
-          ),
-          const Text(
-            'Departamento',
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-              color: SevenManagerTheme.tealBlue,
-            ),
-          )
-        ],
-      ),
+      child: GestureDetector(
+        onTap: (){Navigator.of(context).pushNamed(AppRoutes.register);},
+        child: Column(
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: SevenManagerTheme.tealBlue,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                height: 120,
+                width: 120,
+                child: Image.network('https://files.adventistas.org/noticias/pt/2014/09/cartc3a3o-musica-grafica-848x478.jpg', fit: BoxFit.cover,),
+                   
+                
+                ),
+                 const Text(
+                 'Desbravadores',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: SevenManagerTheme.tealBlue,
+                  ),
+                )
+          ],
+        ),
+      )
+                    
     );
+
+    
   }
 }
